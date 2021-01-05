@@ -21,6 +21,7 @@ class Updater:
         self.db_path = os.path.join(self.library_root_path, ".yacreaderlibrary" + os.sep + "library.ydb")
         self.db_conn = sqlite3.connect(self.db_path)
         self.db_cursor = self.db_conn.cursor()
+        self.db_conn.set_trace_callback(print)
        
         self.id_init = id
         self.max_count_to_process = max
