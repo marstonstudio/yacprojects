@@ -51,6 +51,12 @@ class Updater:
                 WHERE ci.id = :id;
             """, {"id":id_current})
             comic_row = self.db_cursor.fetchone()
+
+            if not comic_row:
+            	self.logger.info("Skipping because query didn't give results, probably because of removed items")
+            	id_current += 1
+            	continue
+            	
             comic_record = ComicRecord(comic_row[0], comic_row[1], comic_row[2], comic_row[3])
 
             xml = self.extract_xml(comic_record.get_path())
