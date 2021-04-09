@@ -20,7 +20,7 @@ class Updater:
         self.library_root_path = os.path.abspath(library)
         self.db_path = os.path.join(self.library_root_path, ".yacreaderlibrary" + os.sep + "library.ydb")
         self.db_conn = sqlite3.connect(self.db_path)
-        self.db_conn.set_trace_callback(print)
+        #self.db_conn.set_trace_callback(print)
         self.db_cursor = self.db_conn.cursor()
        
         self.id_init = id
